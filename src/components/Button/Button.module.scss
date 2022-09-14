@@ -1,0 +1,28 @@
+$inputBorderColor: #d9d9d9;
+$pinkColor: #f52758;
+$whiteColor: #fff;
+
+.button {
+  width: 100%;
+  border-radius: 2px;
+  height: 34px;
+  border: 1px solid;
+  padding: 2px 7px;
+  font-size: 15px
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.primary {
+  background: $pinkColor;
+  border-color: $pinkColor;
+  color: $whiteColor;
+}
+
+.secondary {
+  background: $whiteColor;
+  border-color: $pinkColor;
+  color: $pinkColor;
+}

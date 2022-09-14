@@ -1,0 +1,25 @@
+$enterButtonColor: rgb(105, 105, 105);
+
+.wrapper {
+  Input {
+    margin-bottom: 15px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+
+  Button:first-child {
+    margin-right: 10px;
+  }
+}
+
+.enter_button {
+  cursor: pointer;
+  text-align: center;
+  margin-top: 7px;
+  font-size: 14px;
+  color: $enterButtonColor;
+  font-weight: 700;
+}
