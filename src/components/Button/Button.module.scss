@@ -1,5 +1,5 @@
 $inputBorderColor: #d9d9d9;
-$pinkColor: #f52758;
+$violetColor: rgb(83, 86, 150);
 $whiteColor: #fff;
 
 .button {
@@ -16,13 +16,13 @@ $whiteColor: #fff;
 }
 
 .primary {
-  background: $pinkColor;
-  border-color: $pinkColor;
+  background: $violetColor;
+  border-color: $violetColor;
   color: $whiteColor;
 }
 
 .secondary {
   background: $whiteColor;
-  border-color: $pinkColor;
-  color: $pinkColor;
+  border-color: $violetColor;
+  color: $violetColor;
 }
