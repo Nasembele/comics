@@ -5,6 +5,7 @@ import styles from './Comics.module.scss';
 import {openComic} from "./Comics.selectors";
 import {RightArrow} from "../../components/Icons/RightArrow";
 import {Logout} from "../../components/Icons/Logout";
+import {setUserIsAuthorised} from "../authentication/AuthenticationAC";
 
 export const Comics = () => {
 
@@ -12,10 +13,19 @@ export const Comics = () => {
 
     const currentComic = useSelector(openComic);
 
-    useEffect(() => {
+    useEffect(() => () => {
         // @ts-ignore
-        dispatch(getComic('614')); //614 601
+        dispatch(getComic(''));
     }, []);
+
+    const onClickLogout = () => {
+        dispatch(setUserIsAuthorised(false));
+    } //todo не работает
+
+    const onClickArrow = (direction: number) => () => {
+        // @ts-ignore
+        dispatch(getComic(String(currentComic?.num + direction)));
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -25,15 +35,17 @@ export const Comics = () => {
                         {currentComic?.safe_title}
                     </p>
                     <div className={styles.comic_with_arrow}>
-                        <div className={styles.left_arrow}>
+                        <div className={styles.left_arrow}
+                        onClick={onClickArrow(-1)}>
                             <RightArrow/>
                         </div>
                         <img src={currentComic?.img}
                              className={styles.comic_content}
                              alt={currentComic?.alt}
                         />
-                        <div className={styles.right_arrow}>
-                            <RightArrow/>
+                        <div className={styles.right_arrow}
+                             onClick={onClickArrow(1)}>
+                        <RightArrow/>
                         </div>
                     </div>
                     <p className={styles.date}>
@@ -46,7 +58,8 @@ export const Comics = () => {
                 <div className={styles.transcript}>
                     {currentComic?.transcript}
                 </div>
-                <div className={styles.logout}>
+                <div className={styles.logout}
+                     onClick={onClickLogout}>
                     <Logout/>
                 </div>
             </div>

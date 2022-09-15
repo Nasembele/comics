@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.module.scss';
 import {Input} from "../../../components/Input/Input";
 import {useDispatch, useSelector} from "react-redux";
-import {setUserRegistrationParam} from "../AuthenticationAC";
+import {setUserIsAuthorised, setUserRegistrationParam} from "../AuthenticationAC";
 import {Button} from "../../../components/Button/Button";
 import {newUserSelector} from "../Authentication.selectors";
 
@@ -24,7 +24,7 @@ export const Registration = ({
 
     const saveRegistrationData = () => {
         localStorage.setItem(newUser.email.toLowerCase(), newUser.password);
-        //todo на страницу комикса
+        dispatch(setUserIsAuthorised(true));
     }
 
     return (
