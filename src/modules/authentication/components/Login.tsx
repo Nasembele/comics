@@ -18,6 +18,8 @@ export const Login = ({
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [isErrorPassword, setIsErrorPassword] = useState(false);
+
     const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
     }
@@ -29,11 +31,10 @@ export const Login = ({
     const onClickEnterButton = () => {
         const currentRightPassword = localStorage.getItem(email.toLowerCase());
 
-        if (currentRightPassword === password) {
-            //todo на страницу комикса
+        if (currentRightPassword && currentRightPassword === password) {
             dispatch(setUserIsAuthorised(true));
         } else {
-            //todo неверный логин/пароль
+            setIsErrorPassword(true);
         }
     }
 
@@ -55,6 +56,12 @@ export const Login = ({
                         onClick={onClickRegistrationButton}
                 />
             </div>
+            {
+                isErrorPassword &&
+                    <p className={styles.error_password}>
+                        Неверный email и/или пароль
+                    </p>
+            }
         </div>
     )
 };

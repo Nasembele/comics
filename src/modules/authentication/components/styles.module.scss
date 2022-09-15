@@ -23,3 +23,11 @@ $enterButtonColor: rgb(105, 105, 105);
   color: $enterButtonColor;
   font-weight: 700;
 }
+
+.error_password {
+  font-size: 14px;
+  color: $enterButtonColor;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 5px;
+}
