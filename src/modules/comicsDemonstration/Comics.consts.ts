@@ -1,0 +1,1 @@
+export const SET_OPEN_COMIC = 'COMICS/SET_OPEN_COMIC';

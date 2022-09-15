@@ -9,9 +9,11 @@ import {Provider} from 'react-redux';
 import {composeWithDevTools} from "redux-devtools-extension";
 import AuthenticationReducer from "./modules/authentication/Authentication.reducer";
 import { BrowserRouter } from "react-router-dom";
+import ComicsReducer from "./modules/comicsDemonstration/Comics.reducer";
 
 let reducers = combineReducers({
-    authentication: AuthenticationReducer
+    authentication: AuthenticationReducer,
+    comics: ComicsReducer,
 });
 
 const composeEnhancers = composeWithDevTools({});
