@@ -13,7 +13,7 @@ export const Comics = () => {
 
     const currentComic = useSelector(openComic);
 
-    useEffect(() => () => {
+    useEffect(() => {
         // @ts-ignore
         dispatch(getComic(''));
     }, []);
@@ -23,8 +23,11 @@ export const Comics = () => {
     }
 
     const onClickArrow = (direction: number) => () => {
-        // @ts-ignore
-        dispatch(getComic(String(currentComic?.num + direction)));
+        const comicNumber = (currentComic?.num || 0) + direction;
+        if (comicNumber > 0) {
+            // @ts-ignore
+            dispatch(getComic(String(comicNumber)));
+        }
     }
 
     return (

@@ -23,8 +23,14 @@ export const Registration = ({
     }
 
     const saveRegistrationData = () => {
-        localStorage.setItem(newUser.email.toLowerCase(), newUser.password);
-        dispatch(setUserIsAuthorised(true));
+            localStorage.setItem(newUser.email.toLowerCase(), newUser.password);
+            dispatch(setUserIsAuthorised(true));
+    }
+
+    const saveRegistrationDataWithEnter = (e: KeyboardEvent) => {
+        if (e.keyCode === 13) {
+            saveRegistrationData();
+        }
     }
 
     return (
@@ -32,7 +38,8 @@ export const Registration = ({
             <Input placeholderText={'email'}
                    onChange={onChangeEmailAuth('email')}/>
             <Input placeholderText={'пароль'}
-                   onChange={onChangeEmailAuth('password')}/>
+                   onChange={onChangeEmailAuth('password')}
+                   onKeyDown={saveRegistrationDataWithEnter}/>
 
                    <Button text={'Зарегистрироваться'}
                            type={'primary'}
