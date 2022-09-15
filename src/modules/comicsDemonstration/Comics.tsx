@@ -20,7 +20,7 @@ export const Comics = () => {
 
     const onClickLogout = () => {
         dispatch(setUserIsAuthorised(false));
-    } //todo не работает
+    }
 
     const onClickArrow = (direction: number) => () => {
         // @ts-ignore
