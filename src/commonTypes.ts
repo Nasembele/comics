@@ -1,4 +1,5 @@
 import {IAuthentication} from "./modules/authentication/Authentication.types";
+import {IComic} from "./modules/comicsDemonstration/Comics.types";
 
 export interface IAction {
     type: string,
@@ -7,5 +8,6 @@ export interface IAction {
 
 export interface IState {
     authentication: IAuthentication,
+    comic: IComic,
 }
 

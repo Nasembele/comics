@@ -12,6 +12,6 @@ export interface IOpenComic {
     transcript: string,
 }
 
-export interface IComics {
+export interface IComic {
     openComic?: IOpenComic,
 }

@@ -13,7 +13,7 @@ import ComicsReducer from "./modules/comicsDemonstration/Comics.reducer";
 
 let reducers = combineReducers({
     authentication: AuthenticationReducer,
-    comics: ComicsReducer,
+    comic: ComicsReducer,
 });
 
 const composeEnhancers = composeWithDevTools({});
