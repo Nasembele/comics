@@ -1,5 +1,5 @@
 export interface IAuthentication {
-    isAuthorised: boolean,
+    isAuthorised: null | boolean,
     registration: {
         email: string,
         password: string,

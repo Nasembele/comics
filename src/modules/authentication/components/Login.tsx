@@ -33,6 +33,7 @@ export const Login = ({
 
         if (currentRightPassword && currentRightPassword === password) {
             dispatch(setUserIsAuthorised(true));
+            localStorage.setItem('isAuth', 'true');
         } else {
             setIsErrorPassword(true);
         }

@@ -3,7 +3,7 @@ import {IAction} from "../../commonTypes";
 import * as constants from "./Authentication.consts";
 
 const initialAuthenticationState: IAuthentication = {
-    isAuthorised: false,
+    isAuthorised: null,
     registration: {
         email: '',
         password: '',

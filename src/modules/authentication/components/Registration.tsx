@@ -23,8 +23,9 @@ export const Registration = ({
     }
 
     const saveRegistrationData = () => {
-            localStorage.setItem(newUser.email.toLowerCase(), newUser.password);
-            dispatch(setUserIsAuthorised(true));
+        localStorage.setItem(newUser.email.toLowerCase(), newUser.password);
+        localStorage.setItem('isAuth', 'true');
+        dispatch(setUserIsAuthorised(true));
     }
 
     const saveRegistrationDataWithEnter = (e: KeyboardEvent) => {

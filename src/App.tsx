@@ -12,10 +12,12 @@ function App() {
 
     const isAuthorised = useSelector((state: IState) => state.authentication.isAuthorised);
 
+    const currentIsAuthorised = isAuthorised ?? (localStorage.getItem('isAuth') === 'true');
+
     return (
         <Router history={customHistory}>
             <Route path='/' render={() => (
-                isAuthorised
+                currentIsAuthorised
                     ? (<Comics/>)
                     : (<Authentication/>)
             )}/>
