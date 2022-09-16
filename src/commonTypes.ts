@@ -10,4 +10,3 @@ export interface IState {
     authentication: IAuthentication,
     comic: IComic,
 }
-

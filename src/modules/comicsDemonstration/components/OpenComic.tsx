@@ -20,7 +20,7 @@ export const OpenComic = ({
                  alt={openComic.alt}
             />
             <p className={styles.date}>
-                {`${openComic.day ?? ''}.${openComic.month  ?? ''}.${openComic.year  ?? ''}`}
+                {`${openComic.day ?? ''}.${openComic.month ?? ''}.${openComic.year ?? ''}`}
             </p>
         </div>
 

@@ -1,12 +1,12 @@
 $contentWidth: 300px;
 
 .wrapper {
-    display: flex;
-    background: radial-gradient(ellipse, rgb(242, 208, 231) 7%, rgb(179, 181, 238) 99%);
-    height: 100vh;
+  display: flex;
+  background: radial-gradient(ellipse, rgb(242, 208, 231) 7%, rgb(179, 181, 238) 99%);
+  height: 100vh;
 
-    .content {
-        margin: auto;
-        width: $contentWidth;
-    }
+  .content {
+    margin: auto;
+    width: $contentWidth;
+  }
 }

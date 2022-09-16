@@ -8,7 +8,7 @@ import thunkMiddleware from 'redux-thunk';
 import {Provider} from 'react-redux';
 import {composeWithDevTools} from "redux-devtools-extension";
 import AuthenticationReducer from "./modules/authentication/Authentication.reducer";
-import { BrowserRouter } from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import ComicsReducer from "./modules/comicsDemonstration/Comics.reducer";
 
 let reducers = combineReducers({
@@ -21,17 +21,17 @@ const composeEnhancers = composeWithDevTools({});
 export const store = createStore(reducers, {}, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 
 root.render(
-  <React.StrictMode>
-      <Provider store={store}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-      </Provider>
-  </React.StrictMode>
+    <React.StrictMode>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>
+        </Provider>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

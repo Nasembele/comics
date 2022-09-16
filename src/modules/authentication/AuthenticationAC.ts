@@ -1,6 +1,6 @@
 import * as constants from "./Authentication.consts";
 
-export const setUserRegistrationParam = (data: {param: string, value: string}) => ({
+export const setUserRegistrationParam = (data: { param: string, value: string }) => ({
     type: constants.SET_USER_REGISTRATION_PARAM,
     payload: data
 });

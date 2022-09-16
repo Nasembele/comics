@@ -8,7 +8,7 @@ export default function ComicsReducer(state: IComic = {}, action: IAction) {
             return {
                 ...state,
                 openComic: action.payload
-                }
+            }
         default:
             return state;
     }

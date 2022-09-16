@@ -16,7 +16,7 @@ export const Button = ({
                            type = 'primary',
                            onClick,
                            disabled
-                      }: IButtonProps) => {
+                       }: IButtonProps) => {
 
 
     return (

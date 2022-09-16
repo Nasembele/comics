@@ -17,9 +17,8 @@ export const Comics = () => {
 
     useEffect(() => {
         const currentNumber = currentPathname === '/' ? '' : currentPathname;
-        // @ts-ignore
-        dispatch(getComic(currentNumber));
-    }, [currentPathname]);
+        dispatch(getComic(currentNumber) as any);
+    }, [currentPathname, dispatch]);
 
     const onClickArrow = (direction: number) => () => {
         if (!currentComic?.num || currentComic.num + direction < 1) {
