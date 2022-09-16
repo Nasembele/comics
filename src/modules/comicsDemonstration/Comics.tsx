@@ -2,16 +2,23 @@ import React, {useEffect} from 'react';
 import {getComic} from "./Comics.thunk";
 import {useDispatch, useSelector} from "react-redux";
 import styles from './Comics.module.scss';
-import {openComic} from "./Comics.selectors";
+import {openComicSelector} from "./Comics.selectors";
 import {RightArrow} from "../../components/Icons/RightArrow";
 import {Logout} from "../../components/Icons/Logout";
 import {setUserIsAuthorised} from "../authentication/AuthenticationAC";
+import {LeftArrow} from "../../components/Icons/LeftArrow";
+import {RightArrowEnd} from "../../components/Icons/RightArrowEnd";
+import {LeftArrowEnd} from "../../components/Icons/LeftArrowEnd";
+import {CycleArrow} from "../../components/Icons/CycleArrow";
+import {getRandomInteger} from "../../utils/helpers";
 
 export const Comics = () => {
 
     const dispatch = useDispatch();
 
-    const currentComic = useSelector(openComic);
+    const currentComic = useSelector(openComicSelector);
+
+    const lastComicNumber = Number(localStorage.getItem('lastComicNumber')) || 100;
 
     const currentPathname = window.location.pathname;
 
@@ -27,11 +34,15 @@ export const Comics = () => {
     }
 
     const onClickArrow = (direction: number) => () => {
-        const comicNumber = (currentComic?.num || 0) + direction;
-        if (comicNumber > 0) {
-            localStorage.setItem('isAuth', 'true');
-            window.location.pathname = String(comicNumber);
+        if (!currentComic?.num || currentComic.num + direction < 1) {
+            window.location.pathname = '';
+        } else {
+            window.location.pathname = String(currentComic.num + direction);
         }
+    }
+
+    const onClickGetComicByNumber = (comicNumber: number | '') => () => {
+        window.location.pathname = String(comicNumber);
     }
 
     return (
@@ -50,20 +61,10 @@ export const Comics = () => {
                         <p className={styles.comic_title}>
                             {currentComic?.safe_title}
                         </p>
-                        <div className={styles.comic_with_arrow}>
-                            <div className={styles.left_arrow}
-                                 onClick={onClickArrow(-1)}>
-                                <RightArrow/>
-                            </div>
-                            <img src={currentComic?.img}
-                                 className={styles.comic_content}
-                                 alt={currentComic?.alt}
-                            />
-                            <div className={styles.right_arrow}
-                                 onClick={onClickArrow(1)}>
-                                <RightArrow/>
-                            </div>
-                        </div>
+                        <img src={currentComic?.img}
+                             className={styles.comic_content}
+                             alt={currentComic?.alt}
+                        />
                         <p className={styles.date}>
                             {currentComic?.day &&
                             `${currentComic.day}.${currentComic?.month}.${currentComic?.year}`}
@@ -71,13 +72,37 @@ export const Comics = () => {
                     </div>
                 }
             </div>
-            <div className={styles.transcript_wrapper}>
-                <div className={styles.transcript}>
-                    {currentComic?.transcript}
-                </div>
-                <div className={styles.logout}
-                     onClick={onClickLogout}>
-                    <Logout/>
+            <div className={styles.right_panel_wrapper}>
+                <div className={styles.right_panel}>
+                    <div className={styles.logout}
+                         onClick={onClickLogout}>
+                        <Logout/>
+                    </div>
+                    <div className={styles.transcript}>
+                        {currentComic?.transcript}
+                    </div>
+                    <div className={styles.navigation_bar}>
+                        <div className={styles.navigation_bar_elem}
+                             onClick={onClickGetComicByNumber(1)}>
+                            <LeftArrowEnd/>
+                        </div>
+                        <div className={styles.navigation_bar_elem}
+                             onClick={onClickArrow(-1)}>
+                            <LeftArrow/>
+                        </div>
+                        <div className={styles.navigation_bar_elem}
+                             onClick={onClickGetComicByNumber(getRandomInteger(1, lastComicNumber))}>
+                            <CycleArrow/>
+                        </div>
+                        <div className={styles.navigation_bar_elem}
+                             onClick={onClickArrow(1)}>
+                            <RightArrow/>
+                        </div>
+                        <div className={styles.navigation_bar_elem}
+                             onClick={onClickGetComicByNumber('')}>
+                            <RightArrowEnd/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

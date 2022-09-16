@@ -3,7 +3,7 @@ $violetColor: rgb(83, 86, 150);
 
 .wrapper {
   display: grid;
-  grid-template-columns: 3.5fr 2fr;
+  grid-template-columns: 3.5fr 1.5fr;
   height: 100vh;
 
   .comic_wrapper {
@@ -37,24 +37,9 @@ $violetColor: rgb(83, 86, 150);
         width: 100%;
       }
 
-      .comic_with_arrow {
-        display: flex;
-
-        .left_arrow {
-          cursor: pointer;
-          transform: rotate(180deg);
-          margin: auto 10px;
-        }
-
-        .right_arrow {
-          cursor: pointer;
-          margin: auto 10px;
-        }
-
-        .comic_content {
-          max-height: calc(100vh - 110px);
-          max-width: 100%;
-        }
+      .comic_content {
+        max-height: calc(100vh - 110px);
+        max-width: 100%;
       }
 
       .date {
@@ -68,27 +53,47 @@ $violetColor: rgb(83, 86, 150);
     }
   }
 
-  .transcript_wrapper {
+  .right_panel_wrapper {
     background-color: $transcriptWrapperColor;
     display: flex;
+    width: 100%;
 
-    .transcript {
+    .right_panel {
       height: calc(100vh - 75px);
-      overflow-y: scroll;
-      white-space: pre-wrap;
-      margin: auto 20px;
-      padding-right: 15px;
-      font-size: 14px;
-    }
+      margin: auto 10px auto 20px;
+      width: 100%;
 
-    .logout {
-      position: absolute;
-      top: 8px;
-      right: 5px;
-      height: 30px;
-      width: 30px;
-      fill: $violetColor;
-      cursor: pointer;
+
+      .logout {
+        position: absolute;
+        top: 8px;
+        right: 5px;
+        height: 30px;
+        width: 30px;
+        fill: $violetColor;
+        cursor: pointer;
+      }
+
+      .transcript {
+        height: calc(100vh - 125px);
+        overflow-y: scroll;
+        white-space: pre-wrap;
+        padding-right: 15px;
+        font-size: 14px;
+        width: 100%;
+      }
+
+      .navigation_bar {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+        fill: $violetColor;
+
+        .navigation_bar_elem {
+          cursor: pointer;
+        }
+      }
     }
   }
 }

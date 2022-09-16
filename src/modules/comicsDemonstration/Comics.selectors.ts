@@ -1,3 +1,3 @@
 import {IState} from "../../commonTypes";
 
-export const openComic = (state: IState) => state.comic.openComic;
+export const openComicSelector = (state: IState) => state.comic.openComic;

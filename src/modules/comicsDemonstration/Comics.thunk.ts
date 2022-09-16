@@ -15,6 +15,9 @@ export const getComic = (comicsNumber?: string) => (dispatch: Dispatch) => {
                 dispatch(setOpenComic(null));
             } else {
                 dispatch(setOpenComic(res.data));
+                if (!comicsNumber) {
+                    localStorage.setItem('lastComicNumber', String(res.data.num));
+                }
             }
         })
         .catch((err) => {
