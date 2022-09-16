@@ -8,18 +8,20 @@ interface IButtonProps {
     text: string;
     type?: ButtonType;
     onClick: VoidFunction;
+    disabled?: boolean;
 }
 
 export const Button = ({
                            text,
                            type = 'primary',
-                           onClick
+                           onClick,
+                           disabled
                       }: IButtonProps) => {
 
 
     return (
-        <button className={cc(styles.button, styles[type])}
-                onClick={onClick}>
+        <button className={cc(styles.button, styles[type], disabled && styles.disabled)}
+                onClick={disabled ? undefined : onClick}>
             {text}
         </button>
     )

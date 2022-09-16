@@ -1,6 +1,7 @@
 $inputBorderColor: #d9d9d9;
 $violetColor: rgb(83, 86, 150);
 $whiteColor: #fff;
+$disabledColor: #cac2c2;
 
 .button {
   width: 100%;
@@ -8,11 +9,11 @@ $whiteColor: #fff;
   height: 34px;
   border: 1px solid;
   padding: 2px 7px;
-  font-size: 15px
+  font-size: 15px;
+  cursor: pointer;
 }
 
 .button:hover {
-  cursor: pointer;
 }
 
 .primary {
@@ -25,4 +26,10 @@ $whiteColor: #fff;
   background: $whiteColor;
   border-color: $violetColor;
   color: $violetColor;
+}
+
+.disabled {
+  background: $disabledColor;
+  border-color: $violetColor;
+  color: $whiteColor;
 }

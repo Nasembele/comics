@@ -1,4 +1,5 @@
 $enterButtonColor: rgb(105, 105, 105);
+$violetColor: rgb(83, 86, 150);
 
 .wrapper {
   Input {
@@ -20,7 +21,7 @@ $enterButtonColor: rgb(105, 105, 105);
   text-align: center;
   margin-top: 7px;
   font-size: 14px;
-  color: $enterButtonColor;
+  color: $violetColor;
   font-weight: 700;
 }
 

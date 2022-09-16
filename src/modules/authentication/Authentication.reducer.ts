@@ -7,6 +7,7 @@ const initialAuthenticationState: IAuthentication = {
     registration: {
         email: '',
         password: '',
+        secondPassword: '',
     }
 };
 

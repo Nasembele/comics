@@ -11,7 +11,7 @@ interface ILoginProps {
 
 export const Login = ({
                           onClickRegistrationButton
-                        }: ILoginProps) => {
+                      }: ILoginProps) => {
 
     const dispatch = useDispatch();
 
@@ -19,6 +19,8 @@ export const Login = ({
     const [password, setPassword] = useState('');
 
     const [isErrorPassword, setIsErrorPassword] = useState(false);
+
+    const isValidEnterButton = email && password;
 
     const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
@@ -40,7 +42,7 @@ export const Login = ({
     }
 
     const onClickEnterButtonWithEnter = (e: KeyboardEvent) => {
-        if (e.keyCode === 13) {
+        if (isValidEnterButton && e.keyCode === 13) {
             onClickEnterButton();
         }
     }
@@ -53,11 +55,12 @@ export const Login = ({
             <Input placeholderText={'пароль'}
                    onChange={onChangePassword}
                    onKeyDown={onClickEnterButtonWithEnter}
+                   type={'password'}
             />
-
             <div className={styles.footer}>
                 <Button text={'Войти'}
                         onClick={onClickEnterButton}
+                        disabled={!isValidEnterButton}
                 />
                 <Button text={'Регистрации'}
                         type={'secondary'}
@@ -66,9 +69,9 @@ export const Login = ({
             </div>
             {
                 isErrorPassword &&
-                    <p className={styles.error_password}>
-                        Неверный email и/или пароль
-                    </p>
+                <div className={styles.error_password}>
+                    Неверный email и/или пароль
+                </div>
             }
         </div>
     )

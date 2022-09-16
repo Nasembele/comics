@@ -3,5 +3,6 @@ export interface IAuthentication {
     registration: {
         email: string,
         password: string,
+        secondPassword: string,
     }
 }
