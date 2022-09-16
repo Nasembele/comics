@@ -19,6 +19,15 @@ export const NavigationBar = ({
 
     const lastComicNumber = Number(localStorage.getItem('lastComicNumber')) || 100;
 
+    window.onkeydown = (e: KeyboardEvent) => {
+        if (e.keyCode === 39) {
+            onClickArrow(1)();
+        }
+        if (e.keyCode === 37) {
+            onClickArrow(-1)();
+        }
+    }
+
     return (
         <div className={styles.navigation_bar}>
             <div className={styles.navigation_bar_elem}

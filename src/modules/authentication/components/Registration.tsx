@@ -24,7 +24,8 @@ export const Registration = ({
     const [isSamePasswords, setIsSamePasswords] = useState(true);
     const [isErrorPassword, setIsErrorPassword] = useState(false);
 
-    const isValidRegistrationButton = newUser.email && newUser.password && !isErrorEmail && !isErrorPassword;
+    const isValidRegistrationButton = newUser.email && newUser.password
+        && !isErrorEmail && !isErrorPassword && isSamePasswords;
 
     const onChangeRegParam = (param: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setUserRegistrationParam({param, value: e.target.value}));
@@ -54,18 +55,18 @@ export const Registration = ({
         dispatch(setUserIsAuthorised(true));
     }
 
-    const saveRegistrationDataWithEnter = (e: KeyboardEvent) => {
-        if (isValidRegistrationButton && e.keyCode === 13) {
-            saveRegistrationData();
-        }
-    }
-
     const validateEmail = () => {
         setIsErrorEmail(!(isValid(newUser.email, emailPattern)));
     }
 
     const validatePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         setIsErrorPassword(!isValid(e.target.value, passwordPattern));
+    }
+
+    window.onkeydown = (e: KeyboardEvent) => {
+        if (isValidRegistrationButton && e.keyCode === 13) {
+            saveRegistrationData();
+        }
     }
 
     return (
@@ -81,7 +82,6 @@ export const Registration = ({
             />
             <Input placeholderText={'повторите пароль'}
                    onChange={onChangeSecondPassword}
-                   onKeyDown={saveRegistrationDataWithEnter}
                    type={'password'}
                    onBlur={validatePassword}
             />

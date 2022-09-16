@@ -41,7 +41,7 @@ export const Login = ({
         }
     }
 
-    const onClickEnterButtonWithEnter = (e: KeyboardEvent) => {
+    window.onkeydown = (e: KeyboardEvent) => {
         if (isValidEnterButton && e.keyCode === 13) {
             onClickEnterButton();
         }
@@ -54,7 +54,6 @@ export const Login = ({
             />
             <Input placeholderText={'пароль'}
                    onChange={onChangePassword}
-                   onKeyDown={onClickEnterButtonWithEnter}
                    type={'password'}
             />
             <div className={styles.footer}>
