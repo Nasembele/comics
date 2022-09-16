@@ -13,5 +13,5 @@ export interface IOpenComic {
 }
 
 export interface IComic {
-    openComic?: IOpenComic,
+    openComic?: IOpenComic | null,
 }

@@ -37,29 +37,39 @@ export const Comics = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.comic_wrapper}>
-                <div className={styles.comic}>
-                    <p className={styles.comic_title}>
-                        {currentComic?.safe_title}
-                    </p>
-                    <div className={styles.comic_with_arrow}>
-                        <div className={styles.left_arrow}
-                             onClick={onClickArrow(-1)}>
-                            <RightArrow/>
+                {currentComic === null ?
+                    <div className={styles.comic}>
+                        <div className={styles.error_text_404}>
+                            404
                         </div>
-                        <img src={currentComic?.img}
-                             className={styles.comic_content}
-                             alt={currentComic?.alt}
-                        />
-                        <div className={styles.right_arrow}
-                             onClick={onClickArrow(1)}>
-                            <RightArrow/>
+                        <div className={styles.error_text}>
+                            Такой страницы нет
                         </div>
+                    </div> :
+                    <div className={styles.comic}>
+                        <p className={styles.comic_title}>
+                            {currentComic?.safe_title}
+                        </p>
+                        <div className={styles.comic_with_arrow}>
+                            <div className={styles.left_arrow}
+                                 onClick={onClickArrow(-1)}>
+                                <RightArrow/>
+                            </div>
+                            <img src={currentComic?.img}
+                                 className={styles.comic_content}
+                                 alt={currentComic?.alt}
+                            />
+                            <div className={styles.right_arrow}
+                                 onClick={onClickArrow(1)}>
+                                <RightArrow/>
+                            </div>
+                        </div>
+                        <p className={styles.date}>
+                            {currentComic?.day &&
+                            `${currentComic.day}.${currentComic?.month}.${currentComic?.year}`}
+                        </p>
                     </div>
-                    <p className={styles.date}>
-                        {currentComic?.day &&
-                        `${currentComic?.day}.${currentComic?.month}.${currentComic?.year}`}
-                    </p>
-                </div>
+                }
             </div>
             <div className={styles.transcript_wrapper}>
                 <div className={styles.transcript}>

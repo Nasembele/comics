@@ -10,8 +10,12 @@ const getComicWithUrl = (comicsNumber?: string) => {
 
 export const getComic = (comicsNumber?: string) => (dispatch: Dispatch) => {
     getComicWithUrl(comicsNumber)
-        .then((res: AxiosResponse<IOpenComic>) => {
-            dispatch(setOpenComic(res.data));
+        .then((res: AxiosResponse<IOpenComic | string>) => {
+            if (typeof res.data === 'string') {
+                dispatch(setOpenComic(null));
+            } else {
+                dispatch(setOpenComic(res.data));
+            }
         })
         .catch((err) => {
             console.error(err);
