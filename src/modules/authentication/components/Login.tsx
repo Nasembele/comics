@@ -61,7 +61,7 @@ export const Login = ({
                         onClick={onClickEnterButton}
                         disabled={!isValidEnterButton}
                 />
-                <Button text={'Регистрации'}
+                <Button text={'Регистрация'}
                         type={'secondary'}
                         onClick={onClickRegistrationButton}
                 />
