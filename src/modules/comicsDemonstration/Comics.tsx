@@ -13,23 +13,25 @@ export const Comics = () => {
 
     const currentComic = useSelector(openComicSelector);
 
-    const currentPathname = window.location.pathname;
+    const currentPathname = window.location.hash.slice(1);
 
     useEffect(() => {
-        const currentNumber = currentPathname === '/' ? '' : currentPathname;
-        dispatch(getComic(currentNumber) as any);
+        dispatch(getComic(currentPathname) as any);
     }, [currentPathname, dispatch]);
 
     const onClickArrow = (direction: number) => () => {
         if (!currentComic?.num || currentComic.num + direction < 1) {
-            window.location.pathname = '';
+            window.location.hash = '1';
+            window.location.reload();
         } else {
-            window.location.pathname = String(currentComic.num + direction);
+            window.location.hash = String(currentComic.num + direction);
+            window.location.reload();
         }
     }
 
     const onClickGetComicByNumber = (comicNumber: number | '') => () => {
-        window.location.pathname = String(comicNumber);
+        window.location.hash = String(comicNumber);
+        window.location.reload();
     }
 
     return (
