@@ -26,17 +26,15 @@ export const SidePanel = ({
 
     return (
         <div className={styles.right_panel_wrapper}>
-            <div className={styles.right_panel}>
-                <div className={styles.logout}
-                     onClick={onClickLogout}>
-                    <Logout/>
-                </div>
-                <div className={styles.transcript}>
-                    {description}
-                </div>
-                <NavigationBar onClickArrow={onClickArrow}
-                               onClickGetComicByNumber={onClickGetComicByNumber}/>
+            <div className={styles.logout}
+                 onClick={onClickLogout}>
+                <Logout/>
             </div>
+            <div className={styles.transcript}>
+                {description}
+            </div>
+            <NavigationBar onClickArrow={onClickArrow}
+                           onClickGetComicByNumber={onClickGetComicByNumber}/>
         </div>
     )
 };

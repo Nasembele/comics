@@ -12,16 +12,16 @@ export const OpenComic = ({
 
     return (
         <div className={styles.comic}>
-            <p className={styles.comic_title}>
+            <div className={styles.comic_title}>
                 {openComic.safe_title}
-            </p>
+            </div>
             <img src={openComic.img}
                  className={styles.comic_content}
                  alt={openComic.alt}
             />
-            <p className={styles.date}>
+            <div className={styles.date}>
                 {`${openComic.day ?? ''}.${openComic.month ?? ''}.${openComic.year ?? ''}`}
-            </p>
+            </div>
         </div>
 
     )

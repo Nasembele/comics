@@ -21,7 +21,7 @@ export const Comics = () => {
 
     const onClickArrow = (direction: number) => () => {
         if (!currentComic?.num || currentComic.num + direction < 1) {
-            window.location.hash = '';
+            window.location.hash = '1';
             window.location.reload();
         } else {
             window.location.hash = String(currentComic.num + direction);
