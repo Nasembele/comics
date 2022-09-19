@@ -20,8 +20,11 @@ export const Comics = () => {
     }, [currentPathname, dispatch]);
 
     const onClickArrow = (direction: number) => () => {
-        if (!currentComic?.num || currentComic.num + direction < 1) {
+        if (!currentComic?.num) {
             window.location.hash = '1';
+            window.location.reload();
+        } else if (currentComic.num + direction < 1) {
+            window.location.hash = '';
             window.location.reload();
         } else {
             window.location.hash = String(currentComic.num + direction);
